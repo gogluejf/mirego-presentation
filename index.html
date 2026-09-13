@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Squid-OS Mirego Presentation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hakimel/reveal.js@master/dist/theme/black.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- ============ BATCH 1: My Journey (0–16) ============ -->
+
+    <!-- 1 · Going down the Local AI Rabbit Hole -->
+    <section class="l1 bg-c" id="s1">
+      <div class="slide-body s1-body">
+        <img class="content" src="images/squid-logo.png" alt="">
+        <h2 class="s1-title">Going down the Local AI Rabbit Hole</h2>
+      </div>
+      <div class="slide-footer"><span class="play">▶</span><img class="mark" src="images/squid-mark.png" alt=""><span class="num">01</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Welcome, I'm [name].</li>
+          <li>Today: how I went from cloud-dependent to running frontier-level AI on my desk</li>
+          <li>▶ 1. mouse-paint "hello" — the OS paints with your cursor.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 2 · My Background -->
+    <section class="l3" id="s2">
+      <h2>My Background</h2>
+      <div class="cols">
+        <div class="col">
+          <ul>
+            <li>Tech Advisor</li>
+            <li>Former CTO</li>
+            <li>Builder</li>
+            <li>Entrepreneur</li>
+            <li>OSS Enthusiast</li>
+            <li>UX OCD</li>
+          </ul>
+        </div>
+        <div class="col">
+          <div class="s2-media" style="display:flex; gap:3vw; align-items:center;">
+            <img class="avatar" src="images/jf-avatar-crop.png" alt="" style="height:38vh;">
+            <div style="display:flex; flex-direction:column; align-items:center; gap:16px;">
+              <span class="s2-name">JF René</span>
+              <img src="images/qr-linkedin.png" alt="LinkedIn QR" style="height:20vh;">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer"><img class="mark" src="images/squid-mark.png" alt=""><span class="num">02</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Tech Advisor, Former CTO, Builder, Entrepreneur, OSS Enthusiast.</li>
+          <li>QR → LinkedIn if you want to connect after.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 3 · I Left a CTO Role (section break, auto fade-in + gold fragment) -->
+    <section class="section-break bg-b" id="s3">
+      <h2>
+        <span class="auto-fade">I left my CTO role</span><br>
+        <span class="fragment gold">…to explore AI full time</span>
+      </h2>
+      <div class="slide-footer"><img class="mark" src="images/squid-mark.png" alt=""><span class="num">03</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Left to explore AI full time.</li>
+          <li>Not a hobby — this is the job now.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 4 · My Motivation for Local AI -->
+    <section class="l3" id="s4">
+      <h2>My Motivation for Local AI</h2>
+      <div class="cols">
+        <div class="col">
+          <ul>
+            <li>Love OSS</li>
+            <li>Hate vendor lock-in</li>
+            <li>Find labs irresponsible</li>
+          </ul>
+        </div>
+        <div class="col fragment">
+          <span class="kicker">Agenda</span>
+          <p>1 · My Journey<br>2 · Why Local AI<br>3 · Superpowerize your OS</p>
+        </div>
+      </div>
+      <div class="slide-footer"><img class="mark" src="images/squid-mark.png" alt=""><span class="num">04</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Love OSS, hate vendor lock-in.</li>
+          <li>Find labs irresponsible (data, pricing, availability).</li>
+          <li>Agenda: My Journey → Why Local AI → Superpowerize your OS.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 5 · Token Inflation -->
+    <section class="l1" id="s5">
+      <h2>Token Inflation</h2>
+      <div class="slide-body"><img class="content" src="images/token-maximalist-cycle-bg.png" alt=""></div>
+      <div class="slide-footer"><img class="mark" src="images/squid-mark.png" alt=""><span class="num">05</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Vibe code generates slop code, context keeps growing.</li>
+          <li>Models keep growing, labs buy more hardware.</li>
+          <li>The cycle: bigger model → more tokens → more cost → need bigger GPU.</li>
+          <li>This chart shows the spiral.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 6 · Why We Love Coding So Much -->
+    <section class="l1" id="s6">
+      <h2>Why We Love Coding So Much</h2>
+      <div class="slide-body"><img class="content fragment" src="images/dopamine-code-bg.png" alt=""></div>
+      <div class="slide-footer"><img class="mark" src="images/squid-mark.png" alt=""><span class="num">06</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Dopamine hit every time code works.</li>
+          <li>It's tangible feedback — instant reward loop.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 7 · Why Vibe Coding Is Addictive -->
+    <section class="l1" id="s7">
+      <h2>Why Vibe Coding Is Addictive</h2>
+      <div class="slide-body"><img class="content" src="images/dopamine-prompt-super-bg.png" alt=""></div>
+      <div class="slide-footer"><img class="mark" src="images/squid-mark.png" alt=""><span class="num">07</span></div>
+      <aside class="notes">
+      <ul>
+          <li>You prompt, it builds, you feel like a wizard.</li>
+          <li>But...</li>
+          <li>you're waiting 40 seconds per response.</li>
+          <li>That wait kills the flow state.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 8 · Once Local, There Is No Way Back -->
+    <section class="l1" id="s8">
+      <h2>Once Local, There Is No Way Back</h2>
+      <div class="slide-body"><img class="content" src="images/dopamine-prompt-ferrari-bg.png" alt=""></div>
+      <div class="slide-footer"><img class="mark" src="images/squid-mark.png" alt=""><span class="num">08</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Ferrari vs bus analogy.</li>
+          <li>~200 tok/s local vs 70 tok/s cloud.</li>
+          <li>The dopamine loop only works if the car is fast.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 9 · Down the AI Rabbit Hole (section break) -->
+    <section class="l1 bg-b" id="s9">
+      <h2>Down the AI Rabbit Hole</h2>
+      <div class="slide-body"><img class="content" src="images/rabbit-hole-bg.png" alt=""></div>
+      <div class="slide-footer"><img class="mark" src="images/squid-mark.png" alt=""><span class="num">09</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Once you go local, you can't go back.</li>
+          <li>Every layer becomes interesting: quantization, scheduling, VRAM.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 10 · I Bought an RTX 5090 (L4 full-bleed) -->
+    <section class="l4" id="s10">
+      <img class="full" src="images/workstation-setup-bg.png" alt="">
+      <div class="overlay"></div>
+      <h2>I Bought an RTX 5090</h2>
+      <div class="slide-footer"><img class="mark" src="images/squid-mark.png" alt=""><span class="num">10</span></div>
+      <aside class="notes">
+      <ul>
+          <li>$2k card, 32GB VRAM.</li>
+          <li>Photo of the actual setup on my desk.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 11 · I Let Claude Build My AI Server -->
+    <section class="l1" id="s11">
+      <h2>I Let Claude Build My AI Server</h2>
+      <div class="slide-body"><img class="content" src="images/claude-builds-rigstack-bg.png" alt=""></div>
+      <div class="slide-footer"><img class="mark" src="images/squid-mark.png" alt=""><span class="num">11</span></div>
+      <aside class="notes">
+      <ul>
+          <li>I didn't write this by hand — Claude did.</li>
+          <li>Meta: using cloud AI to build the tool that runs local AI.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 12 · So I Built Rig-Stack -->
+    <section class="l1" id="s12">
+      <h2>So I Built Rig-Stack</h2>
+      <div class="slide-body"><img class="content" src="images/rigstack-components-bg.png?v=3" alt=""></div>
+      <div class="slide-footer"><span class="play">▶</span><img class="mark" src="images/squid-mark.png" alt=""><span class="num">12</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Diagram: scheduler + inference server + model manager</li>
+          <li>▶ 1. rig status.</li>
+          <li>▶ 2. rig status --ninfer.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 13 · I Cut the Cloud, Wired My Rig In -->
+    <section class="l1" id="s13">
+      <h2>I Cut the Cloud, Wired My Rig In</h2>
+      <div class="slide-body"><img class="content" src="images/tui-chat-build-bg.png" alt=""></div>
+      <div class="slide-footer"><img class="mark" src="images/squid-mark.png" alt=""><span class="num">13</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Goal: observe the inference.</li>
+          <li>Qwen was not so good in claude.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 14 · I Gave Tools, It Became Self-Aware -->
+    <section class="l2" id="s14">
+      <h2>I Gave Tools, It Became Self-Aware</h2>
+      <div class="slide-body code-body">
+<pre><code class="language-text"><span class="fragment user"><b class="role">Me:</b> do you see the file in your root folder?</span>
+
+<span class="fragment"><b class="role">AI:</b> Let me check the root of the working directory.</span>
+
+<span class="fragment tool">↳ [✓] bash · ls -la ~/src/squid-os/ | head -30</span>
+
+<span class="fragment"><b class="role">AI:</b> Yes — I can see the contents of <b>~/src/squid-os/</b>. It's the root of your squid-os project with:
+
+• <b>Source:</b> main.go , internal/ , cmd/ , vendor/
+• <b>Build artifacts:</b> squid-os (23MB) , squid-os-stable , two __debug_bin* files (~28MB each)
+• <b>Config:</b> go.mod , go.sum , Makefile , .gitignore
+• <b>Docs:</b> README.md , LICENSE , TRADEMARKS.md , docs/ , website/
+• <b>Workspace:</b> .squid-os/ (plans, skills) , defaultconfig/ , arch-patterns/
+• <b>Git:</b> .git/ present
+
+Is there a specific file you're looking for?</span></code></pre>
+      </div>
+      <div class="slide-footer"><img class="mark" src="images/squid-mark.png" alt=""><span class="num">14</span></div>
+      <aside class="notes">
+      <ul>
+          <li>The agent can see its own file system.</li>
+          <li>It listed its own root folder — no prompt engineering, just tools.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 15 · I Started Experimenting (section break, auto fade-in + gold fragment) -->
+    <section class="section-break bg-b" id="s15">
+      <h2>
+        <span class="auto-fade">I started experimenting</span><br>
+        <span class="fragment gold">Observability is the foundation to scale your system</span>
+      </h2>
+      <div class="slide-footer"><span class="play">▶</span><img class="mark" src="images/squid-mark.png" alt=""><span class="num">15</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Start to experiment what it could do at OS level.</li>
+          <li>▶ 1. inspect ski-cat image.</li>
+          <li>▶ 2. open galaga game.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 16 · I Replaced the Harness -->
+    <section class="l1" id="s16">
+      <h2>I Replaced the Harness</h2>
+      <div class="slide-body"><img class="content" src="images/squid-operates-os-bg.png" alt=""></div>
+      <div class="slide-footer"><img class="mark" src="images/squid-mark.png" alt=""><span class="num">16</span></div>
+      <aside class="notes">
+      <ul>
+          <li>The OS fixes its own config, restarts services.</li>
+          <li>Closed loop: AI operates the machine it runs on.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 17 · My AI Maintains My AI -->
+    <section class="l1" id="s17">
+      <h2>My AI Maintains My AI</h2>
+      <div class="slide-body"><img class="content" src="images/squid-maintains-rigstack-bg.png" alt=""></div>
+      <div class="slide-footer"><img class="mark" src="images/squid-mark.png" alt=""><span class="num">17</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Monitors GPU temp, restarts inference if it dies.</li>
+          <li>No human in the loop for routine ops.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 18 · Software AI Architecture Vision (3-part fragment reveal) -->
+    <section class="l1 bg-b" id="s18">
+      <h2>Software AI Architecture Vision</h2>
+      <div class="slide-body arch-trio">
+        <img class="arch-part fragment" src="images/ai-arch-inference-server-bg.png" alt="">
+        <img class="arch-part fragment" src="images/ai-arch-harness-runtime-bg.png" alt="">
+        <img class="arch-part fragment" src="images/ai-arch-business-data-bg.png" alt="">
+      </div>
+      <div class="slide-footer"><img class="mark" src="images/squid-mark.png" alt=""><span class="num">18</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Where this is heading: AI as OS citizen, not app.</li>
+          <li>Every process visible, every action auditable.</li>
+          <li>Conclusion of my journey — this is the vision I'm building toward.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 19 · I Stopped Renting My Intelligence (section break) -->
+    <section class="section-break bg-b" id="s19">
+      <h2>
+        <span class="auto-fade">I stopped renting my intelligence.</span><br>
+        <span class="fragment gold">…Started owning it.</span>
+      </h2>
+      <div class="slide-footer"><img class="mark" src="images/squid-mark.png" alt=""><span class="num">19</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Transition into Why Local AI.</li>
+          <li>Cloud is leasing your brain — behavior changes, subscription $$, black box.</li>
+          <li>Local means you own the model, the hardware, the data.</li>
+          <li>The next section proves it's viable.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- ============ BATCH 2: Why Local AI (17–27) ============ -->
+
+    <!-- 20 · Local vs Cloud Trade-Offs -->
+    <section class="l3" id="s20">
+      <h2>Local vs Cloud Trade-Offs</h2>
+      <div class="cols">
+        <div class="col">
+          <span class="kicker">Local</span>
+          <ul>
+            <li>Models</li>
+            <li>Concurrency</li>
+            <li>Context window</li>
+            <li>Hardware $$</li>
+          </ul>
+        </div>
+        <div class="col">
+          <span class="kicker">Cloud</span>
+          <ul>
+            <li>Behavior changes</li>
+            <li>Subscription $$</li>
+            <li>Slow</li>
+            <li>Unavailability</li>
+            <li>Black box</li>
+          </ul>
+        </div>
+      </div>
+      <div class="slide-footer"><img class="mark" src="images/squid-mark.png" alt=""><span class="num">20</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Local wins: models, concurrency, context, hardware $$.</li>
+          <li>Cloud wins: behavior changes, subscription $$, speed (sometimes), availability.</li>
+          <li>Honest comparison, not fanboy.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 21 · Limited by RAM and VRAM -->
+    <section class="l1" id="s21">
+      <h2>Limited by RAM and VRAM</h2>
+      <div class="slide-body"><img class="content" src="images/vram-distribution-bg.png" alt=""></div>
+      <div class="slide-footer"><img class="mark" src="images/squid-mark.png" alt=""><span class="num">21</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Your model must fit in memory.</li>
+          <li>This chart shows how VRAM splits between weights + KV cache.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 22 · Quantization Makes It Fit -->
+    <section class="l1" id="s22">
+      <h2>Quantization Makes It Fit</h2>
+      <div class="slide-body"><img class="content" src="images/quantization-bf16-nvfp4-bg.png" alt=""></div>
+      <div class="slide-footer"><img class="mark" src="images/squid-mark.png" alt=""><span class="num">22</span></div>
+      <aside class="notes">
+      <ul>
+          <li>BF16 → NVFP4: half the size, minimal quality loss.</li>
+          <li>This is how 27B fits in 32GB alongside system RAM.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 23 · The Myth: "Local AI Is a Toy" -->
+    <section class="l1 bg-b" id="s23">
+      <h2>The Myth: “Local AI Is a Toy”</h2>
+      <div class="slide-body">
+        <p><span class="auto-fade">🎁 Aug 14 🎁</span></p>
+        <p><span class="fragment">Alibaba shipped Qwen 3.8 27B</span></p>
+        <p><span class="fragment gold">just a little bit behind Fable 5 ♘♞</span></p>
+      </div>
+      <div class="slide-footer"><span class="play">▶</span><img class="mark" src="images/squid-mark.png" alt=""><span class="num">23</span></div>
+      <aside class="notes">
+      <ul>
+          <li>"Aug 14: Qwen 3.8 27B released — approximately as good as Fable 5".</li>
+          <li>WebDev: Fable 5 = 1629, GPT 5.6 = 1617, Qwen 27B = 1594.</li>
+          <li>35 elo apart is a coin flip — same skill tier</li>
+          <li>▶ 1. open lmarena leaderboard live.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 24 · Qwen 3.8 27B vs Large Models -->
+    <section class="l1" id="s24">
+      <h2>Qwen 3.8 27B vs Large Models</h2>
+      <div class="slide-body"><img class="content" src="images/intelligence-vs-model-size-bg.png" alt=""></div>
+      <div class="slide-footer"><img class="mark" src="images/squid-mark.png" alt=""><span class="num">24</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Intelligence vs model size chart.</li>
+          <li>The curve flattens — 27B gets you 90% of the way.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 25 · Performance and Latency -->
+    <section class="l3" id="s25">
+      <h2>Performance and Latency</h2>
+      <div class="cols">
+        <div class="col">
+          <img class="content" src="images/inference-performance-tokens-ttft-bg.png" alt="">
+        </div>
+        <div class="col">
+          <span class="kicker">Tokens/sec</span>
+          <ul>
+            <li>GPT 5.6: <span class="gold">~70</span></li>
+            <li>Qwen 27B: <span class="gold">~200</span></li>
+          </ul>
+          <span class="kicker ttft">Time to First Token</span>
+          <ul>
+            <li>GPT 5.6: <span class="gold">~8s</span></li>
+            <li>Qwen 27B: <span class="gold">~150ms</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="slide-footer"><span class="play">▶</span><img class="mark" src="images/squid-mark.png" alt=""><span class="num">25</span></div>
+      <aside class="notes">
+      <ul>
+          <li>GPT 5.6: ~70 tok/s, ~8s TTFT.</li>
+          <li>Qwen 27B local: ~200 tok/s, ~150ms TTFT</li>
+          <li>▶ 1. open skill-scope session.</li>
+      </ul>
+    </aside>
+    </section>
+
+
+    <!-- 26 · How Long to Generate a QR Code -->
+    <section class="l1" id="s26">
+      <h2>How Long to Generate a QR Code?</h2>
+      <div class="slide-body">
+        <img class="content fragment" src="images/qr-code-generation-time-bg.png" alt="">
+      </div>
+      <div class="slide-footer"><span class="play">▶</span><img class="mark" src="images/squid-mark.png" alt=""><span class="num">26</span></div>
+      <aside class="notes">
+      <ul>
+          <li>▶ 1. QR with GPT 5.6 (wait...).</li>
+          <li>▶ 2. QR with Qwen (instant).</li>
+          <li>▶ 3. show stats.</li>
+      </ul>
+    </aside>
+    </section>
+
+
+    <!-- 27 · Ninfer is a Beast -->
+    <section class="l3" id="s27">
+      <h2>⚡ Ninfer is a Beast!</h2>
+      <div class="cols">
+        <div class="col">
+          <p>A from-scratch C++/CUDA inference engine. One RTX 5090, no cluster, no cloud. Built for speed on consumer hardware.</p>
+        </div>
+        <div class="col fragment">
+          <ul>
+            <li><span class="gold">~200</span> tok/s</li>
+            <li><span class="gold">240k</span> context</li>
+            <li><span class="gold">2</span> max concurrency</li>
+            <li><span class="gold">~150ms</span> time to first token</li>
+          </ul>
+        </div>
+      </div>
+      <div class="slide-footer"><img class="mark" src="images/squid-mark.png" alt=""><span class="num">27</span></div>
+      <aside class="notes">
+      <ul>
+          <li>From-scratch C++/CUDA inference engine, one RTX 5090.</li>
+          <li>~200 tok/s, 240k context, 2 max concurrency, ~150ms TTFT.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 28 · Where Hours Go -->
+    <section class="l1" id="s28">
+      <h2>💤 Where Hours Go</h2>
+      <div class="slide-body"><img class="content fragment" src="images/waiting-vs-execution-time-bg.png" alt=""></div>
+      <div class="slide-footer"><img class="mark" src="images/squid-mark.png" alt=""><span class="num">28</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Chart: ChatGPT 5.6 = 1h 20m total (52% waiting!) vs Qwen 27B = 16m 34s (9% waiting).</li>
+          <li>The killer stat: 42 minutes in queue vs 1.5 minutes.</li>
+          <li>For repetitive workloads, local eliminates the tax entirely.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 29 · RTX 5090 Price Trajectory -->
+    <section class="l1" id="s29">
+      <h2>RTX 5090 Price Trajectory</h2>
+      <div class="slide-body"><img class="content" src="images/rtx-5090-price-trajectory.png" alt=""></div>
+      <div class="slide-footer"><img class="mark" src="images/squid-mark.png" alt=""><span class="num">29</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Price is inflating.</li>
+          <li>Sharp bust with the release of Qwen in August.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 30 · Alternatives to the RTX 5090 -->
+    <section class="l3" id="s30">
+      <h2>Alternatives to the RTX 5090</h2>
+      <div class="cols three">
+        <div class="col">
+          <img class="hw-logo" src="images/mac-m5.png" alt="">
+          <span class="kicker">Mac M5</span>
+          <ul>
+            <li><span class="gold">512GB</span> unified memory</li>
+            <li>Slower, larger models</li>
+          </ul>
+        </div>
+        <div class="col">
+          <img class="hw-logo" src="images/rtx-5090.png" alt="">
+          <span class="kicker">RTX 5090</span>
+          <ul>
+            <li><span class="gold">32GB</span> VRAM</li>
+            <li>Dense + fast</li>
+          </ul>
+        </div>
+        <div class="col">
+          <img class="hw-logo" src="images/rtx-6000-pro.png" alt="">
+          <span class="kicker">RTX 6000 Pro</span>
+          <ul>
+            <li><span class="gold">96GB</span> VRAM</li>
+            <li>Very large context + 15% speed</li>
+          </ul>
+        </div>
+      </div>
+      <div class="slide-footer"><img class="mark" src="images/squid-mark.png" alt=""><span class="num">30</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Mac M5: slower but larger unified memory.</li>
+          <li>RTX 5090: dense + fast (my pick).</li>
+          <li>RTX 6000: very large context + 15% more speed.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- ============ BATCH 3: Superpowerize your OS (30–46) ============ -->
+
+    <!-- 31 · Stop Prompting. Start Operating. (section break, auto fade-in + gold fragment) -->
+    <section class="section-break bg-b" id="s31">
+      <h2>
+        <span class="auto-fade">Stop Prompting.</span><br>
+        <span class="fragment gold">Start Operating.</span>
+      </h2>
+      <div class="slide-footer"><img class="mark" src="images/squid-mark.png" alt=""><span class="num">31</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Transition into Batch 3.</li>
+          <li>We've shown why local AI is fast and powerful.</li>
+          <li>Now: what can you actually DO with it?</li>
+          <li>Your OS becomes a superpower.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 32 · Sometimes Less Is More -->
+    <section class="l1" id="s32">
+      <h2>Sometimes Less Is More</h2>
+      <div class="slide-body code-body">
+<pre><code class="language-text"><span class="fragment"><b>## You are a login filler page expert</b>
+
+• Open <span class="tool">https://foo.bar</span> and wait for full page load.
+• Navigate to <span class="tool">https://foo.bar/login</span> and wait for the form to render.
+• Focus the username field, clear it, type <span class="tool">jf</span>, verify value equals <span class="tool">jf</span>.
+• Focus the password field, clear it, type <span class="tool">*****</span>, verify length is 5.
+• Click the submit button (<span class="tool">button[type="submit"]</span>).
+• Wait up to 10s for URL to change away from <span class="tool">/login</span> or a success element to appear.
+• Verify no error message is visible; report final URL and outcome.</span>
+
+<span class="fragment"><b>## You are a foo.bar expert</b>
+
+• Run <span class="tool">~/login.go</span> to open a session on foo.bar.
+• Report success or the error output.</span></code></pre>
+      </div>
+      <div class="slide-footer"><img class="mark" src="images/squid-mark.png" alt=""><span class="num">32</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Login filler expert vs foobar expert.</li>
+          <li>Smaller focused model beats generalist for narrow tasks.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 33 · Keeping the System Prompt Basic -->
+    <section class="l1" id="s33">
+      <h2>Keeping the System Prompt Basic</h2>
+      <div class="slide-body"><img class="content" src="images/initial-token-count-bg.png" alt=""></div>
+      <div class="slide-footer"><img class="mark" src="images/squid-mark.png" alt=""><span class="num">33</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Initial token count matters — every token is latency.</li>
+          <li>Lean prompt = faster first response.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 34 · Fewer Tools Are Better -->
+    <section class="l2" id="s34">
+      <h2>Fewer Tools Are Better</h2>
+      <div class="slide-body">
+        <p class="tools-line"><span class="dim">@tool:</span><code>bash</code> · <span class="dim">@tool:</span><code>read</code> · <span class="dim">@tool:</span><code>write</code> · <span class="dim">@tool:</span><code>edit</code></p>
+        <p class="tools-sub">all it needs to code</p>
+        <span class="fragment">
+          <p class="tools-line open-line"><span class="dim">@tool:</span><code class="gold">open</code></p>
+          <p class="tools-sub gold">changes your entire OS experience</p>
+        </span>
+      </div>
+      <div class="slide-footer"><span class="play">▶</span><img class="mark" src="images/squid-mark.png" alt=""><span class="num">34</span></div>
+      <aside class="notes">
+      <ul>
+          <li>5 tools: bash, read, write, edit, open</li>
+          <li>▶ 1. open @tool:open source in VS Code.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 35 · Everything Is a Skill -->
+    <section class="l2" id="s35">
+      <h2>Everything Is a Skill</h2>
+      <div class="slide-body s35-body">
+        <p class="s35-pipeline">Plan → Code Tasks</p>
+        <span class="fragment">
+          <p class="s35-sub">2 skills replace the whole harness</p>
+          <p class="s35-skills"><span class="dim">@skill:</span><code class="gold">plan-generator</code> · <span class="dim">@skill:</span><code class="gold">task-executor</code></p>
+        </span>
+      </div>
+      <div class="slide-footer"><span class="play">▶</span><img class="mark" src="images/squid-mark.png" alt=""><span class="num">35</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Why Limiting to Plan → Code | Task ?.</li>
+          <li>Skill unload your prompt</li>
+          <li>▶ 1. fibonacci plan in tmp.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 36 · Your Dream Harness with 3 Skills -->
+    <section class="l3" id="s36">
+      <h2>Your Dream Harness with 3 Skills</h2>
+      <div class="cols">
+        <div class="col s36-left">
+          <p class="s36-skill fragment" data-fragment-index="0"><span class="dim">1.</span> <span class="dim">@skill:</span><code class="gold">skill-builder</code></p>
+          <p class="s36-skill fragment" data-fragment-index="1"><span class="dim">2.</span> <span class="dim">@skill:</span><code class="gold">agent-builder</code></p>
+          <p class="s36-skill fragment" data-fragment-index="2"><span class="dim">3.</span> <span class="dim">@skill:</span><code class="gold">system-builder</code></p>
+        </div>
+        <div class="col s36-right fragment" data-fragment-index="1">
+<pre><code class="language-yaml">name: trader
+description: Researches markets, evaluates setups, and proposes risk-aware trades.
+
+model: ninfer/qwen3.8-27b
+thinking: false
+mode: final_message
+
+system: |
+  You are a careful trading research agent.
+  Separate verified facts from assumptions.
+  Define entry, invalidation, targets, position sizing.
+
+tools:
+  - read_file
+  - bash
+
+skills:
+  - browser-use
+
+memory:
+  namespace: agent
+  instructions: |
+    Remember risk limits, time horizon, watchlist,
+    open positions, entry thesis, mistakes, lessons learned.
+
+limits:
+  steps: 60
+  time: 30m</code></pre>
+        </div>
+      </div>
+      <div class="slide-footer"><span class="play">▶</span><img class="mark" src="images/squid-mark.png" alt=""><span class="num">36</span></div>
+      <aside class="notes">
+      <ul>
+          <li>skill-builder, agent-builder, system-builder.</li>
+          <li>The meta-skills that build your entire harness</li>
+          <li>▶ 1. build hello-gen-ai-mtl skill.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 37 · System-Builder -->
+    <section class="l1" id="s37">
+      <h2>System-Builder</h2>
+      <div class="slide-body"><img class="content" src="images/system-builder-flow.png" alt=""></div>
+      <div class="slide-footer"><img class="mark" src="images/squid-mark.png" alt=""><span class="num">37</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Flow diagram: spec → scaffold → test → ship.</li>
+          <li>The meta-skill that builds other systems.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 38 · Deterministic = Fast + Predictable -->
+    <section class="l1" id="s38">
+      <h2>Deterministic = Fast + Predictable</h2>
+      <div class="slide-body"><img class="content" src="images/tetris-blocks-bg.png" alt=""></div>
+      <div class="slide-footer"><span class="play">▶</span><img class="mark" src="images/squid-mark.png" alt=""><span class="num">38</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Tetris blocks: same input → same output every time</li>
+          <li>▶ 1. build tetris.</li>
+          <li>▶ 2. alter block colors.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 39 · Can It Actually Code? -->
+    <section class="l3" id="s39">
+      <h2>Can It Actually Code?</h2>
+      <div class="cols">
+        <div class="col fragment">
+          <p class="s39-text">Let's alter squid-os</p>
+          <img class="content" src="images/squid-coding-logo.png?v=4" alt="">
+        </div>
+        <div class="col fragment">
+          <p class="s39-text">But complex apps require more planning?</p>
+          <img class="content" src="images/super-mario-plan.png?v=4" alt="">
+        </div>
+      </div>
+      <div class="slide-footer"><span class="play">▶</span><img class="mark" src="images/squid-mark.png" alt=""><span class="num">39</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Proof it's not just a chatbot</li>
+          <li>▶ 1. rainbow squid logo live.</li>
+          <li>▶ 2. mario bros plan.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 40 · Giving Eyes to Your OS -->
+    <section class="l2" id="s40">
+      <h2>Giving Eyes to Your OS</h2>
+      <div class="slide-body">
+        <p class="tools-line"><span class="dim">@skill:</span><code>os-vision</code> + <span class="dim">@tool:</span><code>inspect_media</code></p>
+        <p class="tools-sub">is a game changer</p>
+      </div>
+      <div class="slide-footer"><span class="play">▶</span><img class="mark" src="images/squid-mark.png" alt=""><span class="num">40</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Screenshot windows, read screens, find elements</li>
+          <li>▶ 1. banana webcam.</li>
+          <li>▶ 2. what text do you see in that image? [paste an image].</li>
+          <li>▶ 3. see yourself.</li>
+          <li>▶ 4. slice dopamine img.</li>
+          <li>▶ 5. find cat gallery.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 41 · Extending Your OS -->
+    <section class="l2" id="s41">
+      <h2>Extending Your OS</h2>
+      <div class="slide-body">
+        <p class="s41-line">Your harness, <span class="gold">woven into the OS</span></p>
+      </div>
+      <div class="slide-footer"><span class="play">▶</span><img class="mark" src="images/squid-mark.png" alt=""><span class="num">41</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Right-click in Nautilus → AI actions</li>
+          <li>▶ 1. nautilus right-click.</li>
+          <li>▶ 2. duplicate image.</li>
+          <li>▶ 3. split image.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 42 · Squid Is Self-Aware of Its Environment -->
+    <section class="l2" id="s42">
+      <h2>Squid Is Self-Aware of Its Environment</h2>
+      <div class="slide-body code-body">
+<pre><code class="language-yaml"><span class="env-block"><span class="env-header">## [OS]</span>
+- os: linux
+- arch: amd64
+- home: /home/goglue
+- git: ✔ installed</span>
+
+<span class="env-block"><span class="env-header">## [Skills]</span>
+- browser-use · calculator · chat-analytics
+- plan-generator · plan-runner · task-executor
+- skill-builder · qr-code · os-vision</span>
+
+<span class="env-block"><span class="env-header">## [Agents]</span>
+- trader: Researches markets, evaluates setups, proposes trades</span>
+
+<span class="env-block"><span class="env-header">## [Working Directory]</span>
+- working-dir: ~/src/squid-os (git)
+- under-project-dir: yes
+- file-tree:
+  ├── internal/
+  │   ├── app/ · chat/ · config/ · tools/
+  └── plans/</span>
+
+<span class="env-block"><span class="env-header">## [Squid-OS]</span>
+- version: v0.7.0-388f72d
+- session-mode: interactive
+- global-skills: ~/.config/squid-os/skills (git)
+- memory: ~/memory (git)
+- debug: enabled</span>
+
+<span class="env-block"><span class="env-header">## [Projects]</span>
+- appleIIe-engine: ~/src/appleIIe-engine (git)
+- generative.build: ~/src/generative.build (git)
+- rig-stack: ~/src/rig-stack (git)
+- squid-os: ~/src/squid-os (git)</span>
+
+<span class="env-block"><span class="env-header">## [Memory]</span>
+- namespace: global
+- path: ~/memory
+- [[me.md]] · [[projects.md]] · [[todo.md]]</span></code></pre>
+        <span class="fragment s42-trigger" data-s42-step="0"></span>
+        <span class="fragment s42-trigger" data-s42-step="1"></span>
+        <span class="fragment s42-trigger" data-s42-step="2"></span>
+        <span class="fragment s42-trigger" data-s42-step="3"></span>
+        <span class="fragment s42-trigger" data-s42-step="4"></span>
+        <span class="fragment s42-trigger" data-s42-step="5"></span>
+        <span class="fragment s42-trigger" data-s42-step="6"></span>
+      </div>
+      <div class="slide-footer"><span class="play">▶</span><img class="mark" src="images/squid-mark.png" alt=""><span class="num">42</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Knows where settings are, what's running, what changed</li>
+          <li>▶ 1. open settings.</li>
+          <li>▶ 2. start chat analytics, show me the current session — the env block is pulled from a live session log in ~/.config/squid-os/sessions/.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 43 · Git Everywhere -->
+    <section class="l2" id="s43">
+      <div class="slide-body">
+        <p class="s41-line">Git Everywhere</p>
+      </div>
+      <div class="slide-footer"><span class="play">▶</span><img class="mark" src="images/squid-mark.png" alt=""><span class="num">43</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Memory, skills, configs — all versioned.</li>
+          <li>Rollback is one command.</li>
+          <li>▶ 1. show projects.</li>
+          <li>▶ 2. change directory.</li>
+          <li>▶ 3. git log workflow.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 44 · Observability Is Mandatory -->
+    <section class="l1" id="s44">
+      <h2>Observability Is Mandatory</h2>
+      <div class="slide-body"><img class="content" src="images/context-distribution-bg.png?v=2" alt=""></div>
+      <div class="slide-footer"><span class="play">▶</span><img class="mark" src="images/squid-mark.png" alt=""><span class="num">44</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Context distribution chart: where your tokens actually go</li>
+          <li>▶ 1. open fix-tokens session analytics.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 45 · File Compaction -->
+    <section class="l1" id="s45">
+      <h2>File Compaction</h2>
+      <div class="slide-body"><img class="content" src="images/file-compaction-bg.png" alt=""></div>
+      <div class="slide-footer"><span class="play">▶</span><img class="mark" src="images/squid-mark.png" alt=""><span class="num">45</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Long sessions bloat context → compact automatically</li>
+          <li>▶ 1. open skill-scope session showing compaction.</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 46 · Local AI Is -->
+    <section class="l2" id="s46">
+      <div class="slide-body">
+        <p class="s46-setup">Local AI is</p>
+        <p class="s46-line fragment">Powerful</p>
+        <p class="s46-line fragment">Light-Speed Fast</p>
+        <p class="s46-line fragment">OS Superpowers</p>
+        <p class="s46-line fragment">Observable</p>
+        <p class="s46-line fragment gold">Fun!</p>
+      </div>
+      <div class="slide-footer"><img class="mark" src="images/squid-mark.png" alt=""><span class="num">46</span></div>
+      <aside class="notes">
+      <ul>
+          <li>Local AI is: Powerful · Light-Speed Fast · OS Superpowers · Observable · Fun!</li>
+      </ul>
+    </aside>
+    </section>
+
+    <!-- 47 · Stop Renting. Join the Rabbit Hole. -->
+    <section class="l1" id="s47">
+      <h2>Stop Renting. Join the Rabbit Hole.</h2>
+      <div class="slide-body">
+        <div class="qr-row">
+          <div class="qr-item"><img src="images/qr-squid-os.png" alt="Squid-OS"><span>Squid-OS</span></div>
+          <div class="qr-item"><img src="images/qr-rig-stack.png" alt="Rig-Stack"><span>Rig-Stack</span></div>
+          <div class="qr-item"><img src="images/qr-linkedin.png" alt="LinkedIn"><span>Connect with me</span></div>
+        </div>
+      </div>
+      <div class="slide-footer"><img class="mark" src="images/squid-mark.png" alt=""><span class="num">47</span></div>
+      <aside class="notes">
+      <ul>
+          <li>QR codes: Squid-OS repo, Rig-Stack repo, LinkedIn.</li>
+          <li>"Go build your own rabbit hole."</li>
+      </ul>
+    </aside>
+    </section>
+
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js?v=2"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>
+  Reveal.initialize({
+    width: 1920,
+    height: 1080,
+    margin: 0,
+    hash: true,
+    transition: 'none',
+    controls: false,
+    progress: false,
+    center: false,
+    highlight: { highlightOnLoad: true },
+    lineNumbers: false,
+    plugins: [ RevealNotes ]
+  });
+  // Force highlight standard code blocks after load; preserve custom markup slides.
+  window.addEventListener('load', function() {
+    document.querySelectorAll('pre code').forEach(function(block) {
+      if (block.closest('#s14') || block.closest('#s32') || block.closest('#s42')) return;
+      hljs.highlightElement(block);
+    });
+    // Slide 42: highlight env blocks on fragment trigger
+    Reveal.on('fragmentshown', function(event) {
+      var frag = event.fragment;
+      if (frag.classList.contains('s42-trigger')) {
+        var step = parseInt(frag.getAttribute('data-s42-step'));
+        var blocks = document.querySelectorAll('#s42 .env-block');
+        blocks.forEach(function(b, i) {
+          b.style.opacity = i <= step ? '1' : '0.3';
+        });
+      }
+    });
+  });
+</script>
+</body>
+</html>

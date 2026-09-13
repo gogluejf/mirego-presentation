@@ -1,0 +1,544 @@
+/* GenAI Mirego — Reveal.js deck styles
+   Design system: ../design-system.md
+
+   RESPONSIVE STRATEGY
+   Reveal.js renders each slide on a fixed 1920×1080 canvas and scales that
+   whole canvas to fit the viewport. So we size EVERYTHING in px relative to
+   that 1920×1080 design space. The browser then scales the entire slide
+   uniformly — proportions stay identical on any screen (tiny phone → 4K wall).
+   Never use vw/vh for layout: they track the viewport, not the slide, and
+   break the moment the window is wider than 16:9. */
+
+:root {
+  --bg-a-top: #231924;
+  --bg-a-bot: #251b26;
+  --bg-b-top: #1e1420;
+  --bg-b-bot: #231924;
+  --bg-c-top: #251b26;
+  --bg-c-bot: #2a1f28;
+  --title: #f4e8e0;
+  --dim: #a89aa2;
+  --gold: #f0c040;
+  --orange: #f08912;
+  --green: #40d880;
+  --red: #e04050;
+}
+
+html, body { background: var(--bg-a-top); }
+
+.reveal {
+  font-family: "Segoe UI", "Inter", "Cantarell", "DejaVu Sans", system-ui, sans-serif;
+  font-size: 24px;
+  color: var(--title);
+}
+
+/* ---------- backgrounds ---------- */
+.reveal-viewport { background: linear-gradient(180deg, var(--bg-a-top), var(--bg-a-bot)); }
+section.bg-b { background: linear-gradient(180deg, var(--bg-b-top), var(--bg-b-bot)); }
+section.bg-c { background: linear-gradient(180deg, var(--bg-c-top), var(--bg-c-bot)); }
+
+/* ---------- typography ---------- */
+.reveal h1, .reveal h2 {
+  font-size: 50px;
+  font-weight: 700;
+  color: var(--title);
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1.2;
+  max-width: 80%;
+  margin: 0 0 0.4em 0;
+  text-shadow: none;
+}
+.reveal h2.center, .reveal .l2 h2 { margin-left: auto; margin-right: auto; text-align: center; }
+
+.reveal p, .reveal li { color: var(--title); line-height: 1.5; }
+.reveal .dim { color: var(--dim); }
+.reveal .gold { color: var(--gold); }
+.reveal .orange { color: var(--orange); }
+.reveal .green { color: var(--green); }
+.reveal .red { color: var(--red); }
+
+.reveal code, .reveal pre code {
+  font-family: ui-monospace, "Cascadia Code", "JetBrains Mono", monospace;
+  color: var(--gold);
+  background: rgba(240, 192, 64, 0.08);
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+.reveal pre {
+  width: auto;
+  box-shadow: none;
+  border: 1px solid rgba(168, 154, 162, 0.2);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.35);
+}
+.reveal pre code { background: none; }
+
+.reveal .kicker {
+  font-family: ui-monospace, monospace;
+  font-size: 0.9em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--orange);
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+/* bullets: plain disc, orange marker */
+.reveal ul { list-style: disc; margin-left: 1.2em; }
+.reveal ul li { margin-bottom: 0.45em; line-height: 1.5; }
+.reveal ul li::marker { color: var(--orange); }
+
+/* ---------- layouts ----------
+   All offsets are px on the 1920×1080 canvas.
+   5vw ≈ 96px · 8vw ≈ 154px · 7vh ≈ 76px · 16vh ≈ 173px · 9vh ≈ 97px */
+
+/* L1: title top-left, image centered below */
+.l1 { position: relative; }
+.l1 > h2 {
+  position: absolute;
+  top: 76px; left: 96px;
+  margin: 0;
+  max-width: 80%;
+}
+.l1 .slide-body {
+  position: absolute;
+  inset: 173px 96px 97px 96px;
+  display: flex; align-items: center; justify-content: center;
+}
+.l1 img.content { max-height: 100%; max-width: 100%; object-fit: contain; }
+
+/* L2: centered Apple style */
+.l2 { text-align: center; }
+.l2 .slide-body { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; }
+.l2 p { max-width: 60%; margin: 0.3em auto; }
+
+/* L3: two column — title on top, columns below.
+   Equal horizontal rhythm: left pad == gap == right pad (154px each). */
+.l3 > h2 {
+  position: absolute;
+  top: 76px; left: 96px;
+  margin: 0;
+}
+.l3 .cols {
+  position: absolute;
+  left: 154px; right: 154px; top: 0; bottom: 0;
+  display: flex;
+  align-items: center;      /* vertical centering of both columns */
+  gap: 154px;               /* gap == left padding == right padding */
+}
+.l3 .col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.l3 .col img { max-height: 594px; max-width: 100%; object-fit: contain; }
+
+/* Slide 2: equal before / between / after thirds.
+   Columns size to content; outer margins from col padding,
+   middle gap falls out of remaining space via space-between. */
+#s2 .cols { gap: 0; justify-content: space-between; }
+#s2 .col { flex: none; }
+#s2 .col:first-child { align-items: flex-start; padding-left: 154px; }
+#s2 .col:last-child  { align-items: center;     padding-right: 154px; }
+.s2-name { font-size: 28px; font-weight: 600; color: var(--title); }
+
+/* Slide 4: agenda block left-aligned, pinned to the left of col2's zone */
+#s4 .col:last-child { align-items: flex-start; }
+#s4 .col:last-child p { text-align: left; margin: 0; }
+
+/* L4: full-bleed image, title bottom-left */
+.l4 { position: relative; }
+.l4 img.full {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.l4 .overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(20, 12, 18, 0.82) 100%);
+}
+.l4 h2 {
+  position: absolute;
+  left: 96px; bottom: 130px;
+  margin: 0;
+  max-width: 70%;
+}
+
+/* section break (bg B): single big phrase dead-center */
+.section-break h2 {
+  font-size: 67px;
+  text-align: center;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 85%;
+  white-space: nowrap;
+}
+
+/* ---------- persistent footer ---------- */
+.slide-footer {
+  position: absolute;
+  right: 40px; bottom: 24px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  z-index: 10;
+}
+.slide-footer .play { color: var(--orange); font-size: 20px; line-height: 1; }
+.slide-footer .mark { height: 24px; opacity: 0.7; }
+.slide-footer .num { font-family: ui-monospace, monospace; font-size: 16px; color: var(--dim); }
+.l4 .slide-footer { z-index: 5; }
+
+/* hide reveal's default controls/progress for a cleaner look */
+.reveal .controls, .reveal .progress { display: none; }
+
+/* Fragment fallback: guarantee fragments stay hidden until revealed.
+   (CDN reveal.css may fail to load or get overridden — this is the safety net.) */
+.reveal .fragment { opacity: 0; visibility: hidden; transition: opacity 0.4s ease, visibility 0.4s ease; }
+.reveal .fragment.visible { opacity: 1; visibility: visible; }
+
+/* auto-fade: fades in automatically when slide becomes present */
+.auto-fade { opacity: 0; transition: opacity 0.8s ease 0.3s; }
+.reveal .slides section.present .auto-fade { opacity: 1; }
+
+/* ---------- per-slide tweaks ---------- */
+#s0 img { max-height: 259px !important; }        /* cover logo: don't dominate */
+#s1 .slide-body { inset: 0; flex-direction: column; gap: 40px; }
+#s1 img.content { max-height: 260px !important; }
+#s1 .s1-title {
+  position: static;
+  font-size: 44px;
+  text-align: center;
+  margin: 0;
+}
+#s9 .slide-body { inset: 120px 96px 97px 96px; }   /* tighter top/bottom → bigger image */
+
+img.avatar { border-radius: 50%; object-fit: cover; }
+
+#s14 > h2 { position: absolute; top: 76px; left: 96px; margin: 0; text-align: left; }
+/* Code slide (s14): highlight.js block with per-line fragments */
+#s14 .slide-body.code-body {
+  position: absolute;
+  left: 96px; right: 96px; top: 145px;
+  height: 815px;
+  display: flex; align-items: center; justify-content: center;
+}
+#s14 pre {
+  margin: 0; padding: 20px 44px;
+  width: 100%; height: 100%;
+  background: #1a1218;
+  border-radius: 8px;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex; align-items: center;
+}#s14 code {
+  font-family: ui-monospace, "Cascadia Mono", "Segoe UI Mono", monospace;
+  font-size: 26px; line-height: 1.4;
+  color: #f4e8e0;
+  white-space: pre-wrap;
+  margin: 0 auto;
+  height: 100%;
+  max-height: none !important;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#s14 code b { color: #f0c040; font-weight: 600; }
+#s14 code .tool { color: #40d880; }          /* bash tool call — green */
+#s14 code .user { color: #a89aa2; }          /* user prompt — dim */
+
+.qr-row { display: flex; gap: 58px; justify-content: center; align-items: center; }
+.qr-row img { height: 281px; }
+
+/* ---------- root layout fixes ---------- */
+/* Reveal.js v5 with center:false leaves sections at height:0 — force canvas height */
+.reveal .slides > section { height: 1080px; box-sizing: border-box; }
+
+/* ---------- batch 2 tweaks ---------- */
+
+/* s21: centered fragment lines below title */
+#s23 .slide-body { flex-direction: column; align-items: center; justify-content: center; }
+#s23 .slide-body p { font-size: 44px; font-weight: 700; color: var(--title); margin: 0.3em 0; text-align: center; }
+
+/* s22: bigger image — tighter vertical padding */
+#s24 .slide-body { inset: 140px 60px 50px 60px; }
+
+/* s44: bigger image — tighter vertical padding */
+#s44 .slide-body { inset: 120px 60px 40px 60px; }
+
+/* s25: image left, text right */
+#s25 .col:first-child { flex: 4; align-items: flex-start; }
+#s25 .col:last-child { flex: 1.5; gap: 48px; }
+#s25 .col img.content { max-height: 100%; max-width: 100%; object-fit: contain; }
+#s25 .kicker.ttft { margin-top: 16px; }
+
+/* s23: two-column — left text, right bullets */
+#s27 .col { align-items: flex-start; }
+#s27 .col p { font-size: 28px; line-height: 1.6; margin: 0; }
+#s27 .col ul { font-size: 32px; }
+#s27 .col li { margin-bottom: 0.6em; }
+
+/* s17: 3-part architecture reveal */
+#s19 .arch-trio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+#s19 .arch-part {
+  max-height: 65vh;
+  max-width: 33%;
+  object-fit: contain;
+}
+
+
+
+/* s18/s24/s27: match s4 — left-aligned columns, vertically centered */
+#s20 .col, #s25 .col, #s30 .col { align-items: flex-start; }
+#s20 .col ul, #s25 .col ul, #s30 .col ul { text-align: left; margin-left: 0; padding-left: 0; list-style: none; }
+#s20 .col li, #s25 .col li, #s30 .col li { padding-left: 1.4em; position: relative; }
+#s20 .col li::before, #s25 .col li::before, #s30 .col li::before { content: "•"; position: absolute; left: 0; color: var(--orange); }
+
+/* s27: three columns */
+#s30 .cols.three { gap: 80px; }
+#s30 .col ul { font-size: 28px; }
+#s30 .col li { margin-bottom: 0.5em; }
+#s30 .hw-logo { width: 180px; height: auto; margin-bottom: 32px; }
+
+/* s18: title aligns with column left edge (154px), not the 96px default */
+#s20 > h2 { left: 154px; }
+
+/* s32: two-column images with kickers */
+#s32 .col img.content { max-height: 70%; max-width: 100%; object-fit: contain; }
+
+
+/* General code-body (shared by s14, s32) */
+/* s32: same code-body style as s14 */
+#s32 .slide-body.code-body {
+  position: absolute;
+  left: 96px; right: 96px; top: 145px;
+  height: 815px;
+  display: flex; align-items: center; justify-content: center;
+}
+#s32 pre {
+  margin: 0; padding: 20px 44px;
+  width: 100%; height: 100%;
+  background: #1a1218;
+  border-radius: 8px;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex; align-items: center;
+}
+#s32 code {
+  font-family: ui-monospace, "Cascadia Mono", "Segoe UI Mono", monospace;
+  font-size: 22px; line-height: 1.5;
+  color: #f4e8e0;
+  white-space: pre-wrap;
+  margin: 0 auto;
+  max-height: none !important;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 48px;
+}
+#s32 code > span { display: block; }
+#s32 code b { color: #f0c040; font-weight: 600; }
+#s32 code .tool { color: #40d880; }
+
+/* s34: centered tool names, two beats */
+#s34 .slide-body {
+  position: absolute; left: 96px; right: 96px; top: 80px; bottom: 60px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 20px;
+}
+#s34 .tools-line {
+  font-size: 36px; margin: 0; text-align: center; color: var(--title);
+  white-space: nowrap;
+}
+#s34 .tools-line code {
+  font-family: ui-monospace, monospace;
+  font-size: 36px; background: none; padding: 0; color: var(--title);
+}
+#s34 .tools-line .dim { font-family: ui-monospace, monospace; font-size: 36px; }
+#s34 .open-line code { color: var(--gold); }
+#s34 .tools-sub {
+  font-size: 32px; color: var(--dim); margin: 0; text-align: center;
+  white-space: nowrap;
+}
+#s34 .open-line { margin-top: 40px; }
+#s34 .open-line + .tools-sub { margin-top: 8px; color: var(--gold); }
+#s34 p { max-width: none; }
+#s34 > h2 { position: absolute; top: 76px; left: 96px; margin: 0; text-align: left; }
+
+/* s35: pipeline + skills */
+#s35 > h2 { position: absolute; top: 76px; left: 96px; margin: 0; text-align: left; }
+#s35 .slide-body.s35-body {
+  position: absolute; left: 0; right: 0; top: 0; bottom: 0;
+}
+#s35 .s35-pipeline {
+  position: absolute; left: 50%; top: 46%;
+  transform: translate(-50%, -50%);
+  font-size: 48px; font-weight: 700; color: var(--title); margin: 0;
+  white-space: nowrap;
+}
+#s35 .s35-sub {
+  position: absolute; left: 50%; top: 56%;
+  transform: translateX(-50%);
+  font-size: 32px; color: var(--dim); margin: 0; white-space: nowrap;
+}
+#s35 .s35-skills {
+  position: absolute; left: 50%; top: 62%;
+  transform: translateX(-50%);
+  font-size: 36px; margin: 0; white-space: nowrap;
+}
+#s35 .s35-skills code {
+  font-family: ui-monospace, monospace; font-size: 36px; background: none; padding: 0;
+}
+#s35 .s35-skills .dim { font-family: ui-monospace, monospace; font-size: 36px; }
+
+/* s36: two-column — skills left (top-aligned), code right */
+#s36 > h2 { position: absolute; top: 76px; left: 96px; margin: 0; text-align: left; }
+#s36 .cols {
+  position: absolute; left: 96px; right: 96px; top: 180px; bottom: 60px;
+  display: flex; align-items: flex-start; gap: 64px;
+}
+#s36 .s36-left {
+  flex: none; display: flex; flex-direction: column; gap: 40px;
+}
+#s36 .s36-skill {
+  font-size: 32px; margin: 0; white-space: nowrap;
+}
+#s36 .s36-skill code {
+  font-family: ui-monospace, monospace; font-size: 32px; background: none; padding: 0;
+}
+#s36 .s36-skill .dim { font-family: ui-monospace, monospace; font-size: 32px; }
+#s36 .s36-right {
+  flex: 1; display: flex; align-items: stretch; justify-content: center;
+}
+#s36 pre {
+  margin: 0; padding: 24px 32px; width: 100%; height: 100%;
+  background: #1a1218; border-radius: 8px; box-sizing: border-box;
+  overflow: hidden; display: flex; align-items: center;
+}
+#s36 .s36-right code {
+  font-family: ui-monospace, "Cascadia Mono", monospace;
+  font-size: 18px; line-height: 1.5;
+  max-height: none !important; overflow-y: auto;
+  background: none;
+  color: #abb2bf;
+}
+
+/* s39: two-column with text + image */
+#s39 > h2 { position: absolute; top: 76px; left: 96px; margin: 0; text-align: left; }
+#s39 .cols {
+  position: absolute; left: 96px; right: 96px; top: 200px; bottom: 60px;
+  display: flex; align-items: flex-start; gap: 64px;
+}
+#s39 .col {
+  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 24px;
+}
+#s39 .s39-text {
+  font-size: 28px; color: var(--title); margin: 0; text-align: center;
+  white-space: nowrap;
+}
+#s39 .col img.content { max-height: 45%; max-width: 80%; object-fit: contain; }
+
+/* s40: centered tool names (same pattern as s34) */
+#s40 > h2 { position: absolute; top: 76px; left: 96px; margin: 0; text-align: left; }
+#s40 .slide-body {
+  position: absolute; left: 96px; right: 96px; top: 0; bottom: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 20px;
+}
+#s40 .tools-line {
+  font-size: 36px; margin: 0; text-align: center; color: var(--title);
+  white-space: nowrap;
+}
+#s40 .tools-line code {
+  font-family: ui-monospace, monospace; font-size: 36px; background: none; padding: 0; color: var(--gold);
+}
+#s40 .tools-line .dim { font-family: ui-monospace, monospace; font-size: 36px; }
+#s40 .tools-sub {
+  font-size: 32px; color: var(--dim); margin: 0; text-align: center;
+}
+
+/* s41: single centered line */
+#s41 > h2 { position: absolute; top: 76px; left: 96px; margin: 0; text-align: left; }
+#s41 .slide-body {
+  position: absolute; left: 96px; right: 96px; top: 0; bottom: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+#s41 .s41-line {
+  font-size: 44px; font-weight: 700; color: var(--title); margin: 0;
+  white-space: nowrap;
+}
+
+/* s43: single big centered line (like section break) */
+#s43 .slide-body {
+  position: absolute; left: 96px; right: 96px; top: 0; bottom: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+#s43 .s41-line {
+  font-size: 67px; font-weight: 700; color: var(--title); margin: 0;
+  white-space: nowrap;
+}
+
+/* s46: recap — one line at a time */
+#s46 .slide-body {
+  position: absolute; left: 96px; right: 96px; top: 0; bottom: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 24px;
+}
+#s46 .s46-setup {
+  font-size: 32px; color: var(--dim); margin: 0;
+  white-space: nowrap; margin-bottom: 16px;
+}
+#s46 .s46-line {
+  font-size: 48px; font-weight: 700; color: var(--title); margin: 0;
+  white-space: nowrap;
+}
+#s46 .s46-line.gold { color: var(--gold); }
+
+/* s47: thank you + 3 QR codes */
+#s47 > h2 { position: absolute; top: 76px; left: 96px; margin: 0; text-align: left; }
+#s47 .slide-body {
+  position: absolute; left: 96px; right: 96px; top: 140px; bottom: 60px;
+  display: flex; align-items: center; justify-content: center;
+}
+#s47 .qr-row {
+  display: flex; gap: 80px; align-items: center; justify-content: center;
+}
+#s47 .qr-item {
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+}
+#s47 .qr-item img { height: 280px; }
+#s47 .qr-item span {
+  font-size: 24px; color: var(--dim);
+}
+
+/* s42: code block with fragments */
+#s42 > h2 { position: absolute; top: 76px; left: 96px; margin: 0; text-align: left; }
+#s42 .slide-body.code-body {
+  position: absolute; left: 96px; right: 96px; top: 145px;
+  height: 815px;
+  display: flex; align-items: stretch; justify-content: center;
+}
+#s42 pre {
+  margin: 0; padding: 32px 48px;
+  width: 100%; height: 100%;
+  background: #1a1218; border-radius: 8px;
+  overflow-y: auto; box-sizing: border-box;
+}
+#s42 code {
+  font-family: ui-monospace, "Cascadia Mono", monospace;
+  font-size: 26px; line-height: 1.7;
+  max-height: none !important; overflow-y: visible;
+  background: none;
+  display: block;
+}
+#s42 .env-block { opacity: 0.3; transition: opacity 0.4s ease; }
+#s42 .s42-trigger { position: absolute; width: 1px; height: 1px; overflow: hidden; }
+#s42 code { color: #abb2bf; }
+#s42 code .env-header { color: #e5c07b; font-weight: 600; }
+
